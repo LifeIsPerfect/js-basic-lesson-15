@@ -24,7 +24,7 @@ module.exports = {
   },
   plugins: ['jest'],
   rules: {
-    'max-len': ['error', {ignoreComments: true }],
+    'max-len': ['error', { ignoreComments: true }],
     'import/prefer-default-export': 'off',
   },
 };
