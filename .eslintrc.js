@@ -20,9 +20,17 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['jest'],
+  plugins: ['jest', '@stylistic/js'],
   rules: {
-    'max-len': ['error', { ignoreComments: true }],
+    '@stylistic/js/max-len': ['error', { code: 80 }, { ignoreComments: true }],
     'import/prefer-default-export': 'off',
+    'no-console': 'off',
+    'no-alert': 'off',
+    'no-plusplus': 'off',
+    /* '@stylistic/js/space-in-parens': ['error', 'always'], */
+    '@stylistic/js/newline-per-chained-call': [
+      'error',
+      { ignoreChainWithDepth: 2 },
+    ],
   },
 };
