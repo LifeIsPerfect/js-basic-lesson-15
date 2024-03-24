@@ -1,4 +1,5 @@
 const buttonHideFunction = () => {
+  console.log('hello1 ');
   const textInput = document.querySelector('.text-input');
   if (textInput.value) {
     setHideButtonFlag(false);
@@ -8,6 +9,7 @@ const buttonHideFunction = () => {
 };
 
 const addParagraph = () => {
+  console.log('hello1 ');
   const block = document.querySelector('.block');
   const newParagraph = document.createElement('p');
   const textInput = document.querySelector('.text-input');
@@ -37,4 +39,4 @@ document.addEventListener('change', buttonHideFunction);
 const buttonElement = document.querySelector('.button');
 buttonElement.addEventListener('click', addParagraph);
 
-module.exports = { addParagraph, setHideButtonFlag, buttonHideFunction };
+// module.exports = { addParagraph, setHideButtonFlag, buttonHideFunction };
