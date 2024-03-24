@@ -33,5 +33,7 @@ module.exports = {
       { ignoreChainWithDepth: 2 },
     ],
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    'no-use-before-define': 'off',
+    'global-require': 'off',
   },
 };
