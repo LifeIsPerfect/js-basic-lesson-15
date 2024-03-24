@@ -32,5 +32,6 @@ module.exports = {
       'error',
       { ignoreChainWithDepth: 2 },
     ],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
   },
 };
