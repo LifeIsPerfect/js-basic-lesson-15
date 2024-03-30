@@ -1,13 +1,13 @@
-const buttonHideFunction = () => {
+function buttonHideFunction() {
   const textInput = document.querySelector('.text-input');
   if (textInput.value) {
     setHideButtonFlag(false);
   } else {
     setHideButtonFlag(true);
   }
-};
+}
 
-const addParagraph = () => {
+function addParagraph() {
   const block = document.querySelector('.block');
   const newParagraph = document.createElement('p');
   const textInput = document.querySelector('.text-input');
@@ -23,12 +23,12 @@ const addParagraph = () => {
   if (block.childElementCount > 5) {
     block.removeChild(block.firstElementChild);
   }
-};
+}
 
-const setHideButtonFlag = (flag) => {
+function setHideButtonFlag(flag) {
   const buttonElement = document.querySelector('.button');
   buttonElement.hidden = flag;
-};
+}
 
 console.log('123');
 setHideButtonFlag(true);

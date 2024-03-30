@@ -18,6 +18,7 @@ describe('Homework #7', () => {
       </body>
       `;
 
+    // eslint-disable-next-line global-require
     require('./homework'); // Здесь добавляются коллбеки на нажатие кнопки и на изменение текста в текстбоксе.
   });
 
