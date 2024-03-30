@@ -1,21 +1,17 @@
 function buttonHideFunction() {
-  const textInput = document.querySelector('.text-input');
-  if (textInput.value) {
-    setHideButtonFlag(false);
-  } else {
-    setHideButtonFlag(true);
-  }
+  const textbox = document.querySelector('.text-input');
+  setHideButtonFlag(!textbox.value);
 }
 
 function addParagraph() {
   const block = document.querySelector('.block');
   const newParagraph = document.createElement('p');
-  const textInput = document.querySelector('.text-input');
+  const textbox = document.querySelector('.text-input');
 
   newParagraph.classList.add('text');
-  newParagraph.textContent = textInput.value;
+  newParagraph.textContent = textbox.value;
 
-  textInput.value = null;
+  textbox.value = null;
   buttonHideFunction();
 
   block.append(newParagraph);
@@ -30,7 +26,6 @@ function setHideButtonFlag(flag) {
   buttonElement.hidden = flag;
 }
 
-console.log('123');
 setHideButtonFlag(true);
 
 // document.addEventListener('change', buttonHideFunction);
