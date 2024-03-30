@@ -28,7 +28,6 @@ function setHideButtonFlag(flag) {
 
 setHideButtonFlag(true);
 
-// document.addEventListener('change', buttonHideFunction);
 document
   .getElementsByClassName('text-input')[0]
   .addEventListener('change', buttonHideFunction);
