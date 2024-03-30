@@ -2,8 +2,7 @@ import { getMulAndSum, getSummaryLenght, getDigitSum } from './homework';
 
 describe('Homework #1, Task #1', () => {
   it('Case #1', () => {
-    jest.spyOn(window, 'prompt').mockReturnValueOnce(3)
-.mockReturnValueOnce(4);
+    jest.spyOn(window, 'prompt').mockReturnValueOnce(3).mockReturnValueOnce(4);
     const logSpy = jest.spyOn(console, 'log');
     getMulAndSum();
     expect(logSpy).toHaveBeenCalledTimes(2);

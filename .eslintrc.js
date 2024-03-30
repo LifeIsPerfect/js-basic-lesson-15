@@ -26,10 +26,10 @@ module.exports = {
     'no-alert': 'off',
     'no-plusplus': 'off',
     // '@stylistic/js/max-len': ['error', { code: 80 }, { ignoreComments: true }],
-    '@stylistic/js/newline-per-chained-call': [
+    /* '@stylistic/js/newline-per-chained-call': [
       'error',
       { ignoreChainWithDepth: 2 },
-    ],
+    ], */
     'no-use-before-define': ['error', { functions: false }],
   },
 };
