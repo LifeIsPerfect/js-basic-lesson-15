@@ -1,5 +1,4 @@
 const buttonHideFunction = () => {
-  console.log('hello1 ');
   const textInput = document.querySelector('.text-input');
   if (textInput.value) {
     setHideButtonFlag(false);
@@ -9,13 +8,12 @@ const buttonHideFunction = () => {
 };
 
 const addParagraph = () => {
-  console.log('hello1 ');
   const block = document.querySelector('.block');
   const newParagraph = document.createElement('p');
   const textInput = document.querySelector('.text-input');
 
   newParagraph.classList.add('text');
-  newParagraph.innerText = textInput.value;
+  newParagraph.textContent = textInput.value;
 
   textInput.value = null;
   buttonHideFunction();
@@ -32,9 +30,13 @@ const setHideButtonFlag = (flag) => {
   buttonElement.hidden = flag;
 };
 
+console.log('123');
 setHideButtonFlag(true);
 
-document.addEventListener('change', buttonHideFunction);
+// document.addEventListener('change', buttonHideFunction);
+document
+  .getElementsByClassName('text-input')[0]
+  .addEventListener('change', buttonHideFunction);
 
 const buttonElement = document.querySelector('.button');
 buttonElement.addEventListener('click', addParagraph);

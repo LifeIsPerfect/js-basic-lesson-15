@@ -21,59 +21,68 @@ describe('Homework #7', () => {
     require('./homework'); // Здесь добавляются коллбеки на нажатие кнопки и на изменение текста в текстбоксе.
   });
 
+  afterEach(() => {
+    jest.resetModules();
+  });
+
   describe('Task #1. Button visibility', () => {
     it('Case #1', () => {
-      expect(document.getElementsByClassName('button')[0]).not.toBeVisible();
+      const button = document.getElementsByClassName('button')[0];
+      const textbox = document.getElementsByClassName('text-input')[0];
 
-      document.getElementsByClassName('text-input')[0].value = '123';
+      expect(button).not.toBeVisible();
+
+      textbox.value = '123';
+      textbox.dispatchEvent(new Event('change'));
       // В этот момент должен сработать коллбек на событие 'change' и сделать кнопку видимой.
-      expect(document.getElementsByClassName('button')[0]).toBeVisible();
+      expect(button).toBeVisible();
 
-      document.getElementsByClassName('text-input')[0].value = null;
+      textbox.value = '';
+      textbox.dispatchEvent(new Event('change'));
       // В этот момент должен сработать коллбек на событие 'change' и сделать кнопку невидимой.
-      expect(document.getElementsByClassName('button')[0]).not.toBeVisible();
+      expect(button).not.toBeVisible();
     });
   });
 
   describe('Task #2. Button click', () => {
     it('Case #1', () => {
-      expect(document.getElementsByClassName('button')[0]).not.toBeVisible();
+      const button = document.getElementsByClassName('button')[0];
+      const textbox = document.getElementsByClassName('text-input')[0];
+      const paragraphs = document.getElementsByClassName('text');
 
-      document.getElementsByClassName('text-input')[0].value = '123';
+      expect(button).not.toBeVisible();
+
+      textbox.value = '123';
+      textbox.dispatchEvent(new Event('change'));
       // В этот момент должен сработать коллбек на событие 'change' и сделать кнопку видимой.
-      expect(document.getElementsByClassName('button')[0]).toBeVisible();
+      expect(button).toBeVisible();
 
-      document.getElementsByClassName('button')[0].click();
+      button.click();
+
       // В этот момент должен сработать коллбек на событие 'click', должно стать 4 параграфа,
       // текстбокс должен обнулиться и кнопка должна стать невидимой.
-      expect(document.getElementsByClassName('text').length).toBe(4);
-      expect(document.getElementsByClassName('text-input')[0].value).toBeNull();
-      expect(document.getElementsByClassName('button')[0]).not.toBeVisible();
+      expect(paragraphs.length).toBe(4);
+      expect(paragraphs[3].innerHTML).toBe('123');
+      expect(textbox.value).toBe('');
+      expect(button).not.toBeVisible();
     });
   });
 
   describe('Task #3. More than 5 paragraphs', () => {
     it('Case #1', () => {
-      document.getElementsByClassName('text-input')[0].value = '111';
-      document.getElementsByClassName('button')[0].click();
-      // Теперь параграфов 4.
+      const textbox = document.getElementsByClassName('text-input')[0];
+      const button = document.getElementsByClassName('button')[0];
+      const paragraphs = document.getElementsByClassName('text');
 
-      document.getElementsByClassName('text-input')[0].value = '222';
-      document.getElementsByClassName('button')[0].click();
-      // Теперь параграфов 5.
+      for (let i = 0; i < 5; i++) {
+        textbox.value = i;
+        textbox.dispatchEvent(new Event('change'));
+        button.click();
+      }
+      // Сначала было 3 параграфа, добавили ещё 5. Должно остаться 5 последних.
 
-      document.getElementsByClassName('text-input')[0].value = '333';
-      document.getElementsByClassName('button')[0].click();
-      // А теперь по-прежнему должно остаться 5 параграфов.
-
-      document.getElementsByClassName('text-input')[0].value = '444';
-      document.getElementsByClassName('button')[0].click();
-
-      document.getElementsByClassName('text-input')[0].value = '555';
-      document.getElementsByClassName('button')[0].click();
-
-      expect(document.getElementsByClassName('text').length).toBe(5);
-      expect(document.getElementsByClassName('text')[0]).toBe('111'); // Чтобы убедиться, что удаляются сначала старые параграфы.
+      expect(paragraphs.length).toBe(5);
+      expect(paragraphs[0].innerHTML).toBe('0'); // Проверяем, что удаляются сначала старые параграфы.
     });
   });
 });
